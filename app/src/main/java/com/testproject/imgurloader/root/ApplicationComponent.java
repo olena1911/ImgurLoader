@@ -1,6 +1,6 @@
 package com.testproject.imgurloader.root;
 
-import com.testproject.imgurloader.GalleryActivity;
+import com.testproject.imgurloader.gallery.GalleryActivity;
 
 import javax.inject.Singleton;
 

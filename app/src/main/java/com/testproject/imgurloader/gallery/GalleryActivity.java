@@ -1,9 +1,11 @@
-package com.testproject.imgurloader;
+package com.testproject.imgurloader.gallery;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GalleryActivity extends AppCompatActivity {
+import com.testproject.imgurloader.R;
+
+public class GalleryActivity extends AppCompatActivity implements GalleryMVP.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
