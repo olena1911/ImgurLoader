@@ -5,8 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
 import com.testproject.imgurloader.R;
 
 import java.util.List;
@@ -36,7 +37,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
         }
         //int pathColumnIndex = mCursor.getColumnIndex(MediaStore.Images.Media.DATA);*/
         //holder.pathTextView.setText(mCursor.getString(pathColumnIndex));
-        holder.pathTextView.setText(pathList.get(position));
+        Picasso.get()
+                .load(pathList.get(position))
+                .resize(300, 300)
+                .centerInside()
+                .into(holder.photoImageView);
     }
 
     @Override
@@ -49,13 +54,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     public class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-        //ImageView photoImageView;
-        TextView pathTextView;
+        ImageView photoImageView;
 
         public PhotoViewHolder(View itemView) {
             super(itemView);
-            //photoImageView = itemView.findViewById(R.id.img_photo);
-            pathTextView = itemView.findViewById(R.id.img_text);
+            photoImageView = itemView.findViewById(R.id.img_photo);
         }
     }
 }

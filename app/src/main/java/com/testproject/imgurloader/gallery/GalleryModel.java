@@ -23,18 +23,21 @@ public class GalleryModel implements GalleryMVP.Model {
         String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = context.getContentResolver().query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                projection, // Which columns to return
-                null,       // Return all rows
+                projection,
+                null,
                 null,
                 MediaStore.Images.Media.DEFAULT_SORT_ORDER);
         cursor.moveToFirst();
         // TODO change to cursor
         List<String> pathsList = new ArrayList<>();
+        int count = 0;
         do {
-            pathsList.add(cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)));
+            pathsList.add("file://" + cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)));
             cursor.moveToNext();
+            count++;
         }
-            while (!cursor.isLast());
+            while (count < 10);
+        cursor.close();
         return Observable.fromIterable(pathsList);
     }
 
