@@ -1,7 +1,5 @@
 package com.testproject.imgurloader.gallery;
 
-import android.content.Context;
-
 import io.reactivex.Observable;
 
 public interface GalleryMVP {

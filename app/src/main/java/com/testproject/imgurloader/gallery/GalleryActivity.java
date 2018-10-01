@@ -31,7 +31,7 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
         RecyclerView mPhotosRecyclerView = findViewById(R.id.list_gallery);
         mPhotosRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        mGalleryCursorAdapter = new GalleryAdapter(this, pathsList);
+        mGalleryCursorAdapter = new GalleryAdapter(pathsList);
         mPhotosRecyclerView.setAdapter(mGalleryCursorAdapter);
     }
 

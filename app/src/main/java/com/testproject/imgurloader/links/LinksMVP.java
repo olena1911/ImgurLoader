@@ -1,7 +1,5 @@
 package com.testproject.imgurloader.links;
 
-import android.content.Context;
-
 import io.reactivex.Observable;
 
 public interface LinksMVP {

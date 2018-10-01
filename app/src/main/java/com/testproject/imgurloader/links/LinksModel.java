@@ -3,8 +3,6 @@ package com.testproject.imgurloader.links;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.provider.MediaStore;
-import android.support.v4.content.CursorLoader;
 
 import com.testproject.imgurloader.db.ImgurContract;
 
