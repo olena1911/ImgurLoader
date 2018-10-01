@@ -15,11 +15,9 @@ import java.util.List;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoViewHolder> {
 
-    private Context mContext;
     private List<String> pathList;
 
-    public GalleryAdapter(Context context, List<String> pathList) {
-        mContext = context;
+    public GalleryAdapter(List<String> pathList) {
         this.pathList = pathList;
     }
 
@@ -32,11 +30,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     @Override
     public void onBindViewHolder(GalleryAdapter.PhotoViewHolder holder, int position) {
-        /*if (!mCursor.moveToPosition(position)) {
-            return;
-        }
-        //int pathColumnIndex = mCursor.getColumnIndex(MediaStore.Images.Media.DATA);*/
-        //holder.pathTextView.setText(mCursor.getString(pathColumnIndex));
         Picasso.get()
                 .load(pathList.get(position))
                 .resize(300, 300)
@@ -46,9 +39,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     @Override
     public int getItemCount() {
-        /*if (mCursor == null)
-            return 0;
-        return mCursor.getCount();*/
         return pathList.size();
     }
 

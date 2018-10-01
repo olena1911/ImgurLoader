@@ -7,36 +7,33 @@ import android.provider.MediaStore;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 public class GalleryModel implements GalleryMVP.Model {
 
-    private Repository repository;
+    @Inject
+    private Context mContext;
 
-    public GalleryModel(Repository repository) {
-        this.repository = repository;
-    }
-
-    // TODO remove context
     @Override
-    public Observable<String> getPhotoPaths(Context context) {
+    public Observable<String> getPhotoPaths() {
         String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = context.getContentResolver().query(
+        Cursor cursor = mContext.getContentResolver().query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 projection,
                 null,
                 null,
                 MediaStore.Images.Media.DEFAULT_SORT_ORDER);
-        cursor.moveToFirst();
-        // TODO change to cursor
+
         List<String> pathsList = new ArrayList<>();
-        int count = 0;
+        cursor.moveToFirst();
         do {
             pathsList.add("file://" + cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)));
             cursor.moveToNext();
-            count++;
         }
-            while (count < 10);
+        while (!cursor.isLast());
+
         cursor.close();
         return Observable.fromIterable(pathsList);
     }

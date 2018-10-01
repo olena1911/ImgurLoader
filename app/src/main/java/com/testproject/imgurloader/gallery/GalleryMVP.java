@@ -7,7 +7,7 @@ import io.reactivex.Observable;
 public interface GalleryMVP {
 
     interface Model {
-        Observable<String> getPhotoPaths(Context context);
+        Observable<String> getPhotoPaths();
     }
 
     interface View {
@@ -16,7 +16,7 @@ public interface GalleryMVP {
 
     interface Presenter {
         void setView(GalleryMVP.View view);
-        void loadPicturesFromGallery(Context context);
+        void loadPicturesFromGallery();
         void rxUnsubscribe();
     }
 }

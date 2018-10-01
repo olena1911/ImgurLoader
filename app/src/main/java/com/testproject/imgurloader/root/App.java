@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.testproject.imgurloader.gallery.GalleryModel;
 import com.testproject.imgurloader.gallery.GalleryModule;
+import com.testproject.imgurloader.links.LinksModule;
 
 public class App extends Application {
 
@@ -15,6 +16,7 @@ public class App extends Application {
         component = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .galleryModule(new GalleryModule())
+                .linksModule(new LinksModule())
                 .build();
     }
 

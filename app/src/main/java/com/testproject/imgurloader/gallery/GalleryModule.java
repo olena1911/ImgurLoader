@@ -14,14 +14,8 @@ public class GalleryModule {
     }
 
     @Provides
-    public GalleryMVP.Model provideTopMoviesActivityModel(Repository repository) {
-        return new GalleryModel(repository);
-    }
-
-    @Singleton
-    @Provides
-    public Repository provideRepo() {
-        return new GalleryRepository();
+    public GalleryMVP.Model provideGalleryModel() {
+        return new GalleryModel();
     }
 
 }

@@ -19,7 +19,7 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
     private GalleryAdapter mGalleryCursorAdapter;
 
     @Inject
-    GalleryMVP.Presenter presenter;
+    private GalleryMVP.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
     protected void onStart() {
         super.onStart();
         presenter.setView(this);
-        presenter.loadPicturesFromGallery(this);
+        presenter.loadPicturesFromGallery();
     }
 
     @Override

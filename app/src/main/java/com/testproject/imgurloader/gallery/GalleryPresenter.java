@@ -1,7 +1,5 @@
 package com.testproject.imgurloader.gallery;
 
-import android.content.Context;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
@@ -24,9 +22,9 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
     }
 
     @Override
-    public void loadPicturesFromGallery(Context context) {
+    public void loadPicturesFromGallery() {
         subscription = model
-                .getPhotoPaths(context)
+                .getPhotoPaths()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<String>() {
@@ -45,9 +43,6 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        /*if (view != null) {
-                            view.showSnackbar("Error getting movies");
-                        }*/
                     }
 
                 });
