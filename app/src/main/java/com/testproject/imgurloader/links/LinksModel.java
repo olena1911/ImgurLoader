@@ -1,5 +1,6 @@
 package com.testproject.imgurloader.links;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore;
@@ -46,5 +47,12 @@ public class LinksModel implements LinksMVP.Model {
 
         linksCursor.close();
         return Observable.fromIterable(linksList);
+    }
+
+    @Override
+    public void addLink(String url) {
+        ContentValues values = new ContentValues();
+        values.put(ImgurContract.LinksEntry.COLUMN_LINK, url);
+        mContext.getContentResolver().insert(ImgurContract.LinksEntry.CONTENT_URI, values);
     }
 }

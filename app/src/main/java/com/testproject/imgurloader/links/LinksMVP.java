@@ -8,6 +8,7 @@ public interface LinksMVP {
 
     interface Model {
         Observable<String> getLinks();
+        void addLink(String url);
     }
 
     interface View {
@@ -18,5 +19,6 @@ public interface LinksMVP {
     interface Presenter {
         void setView(LinksMVP.View view);
         void loadLinks();
+        void saveLink(String url);
     }
 }

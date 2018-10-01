@@ -46,4 +46,9 @@ public class LinksPresenter implements LinksMVP.Presenter {
                         }
                     });
     }
+
+    @Override
+    public void saveLink(String url) {
+        model.addLink(url);
+    }
 }

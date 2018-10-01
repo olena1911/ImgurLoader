@@ -5,6 +5,10 @@ public class ImageResponse {
     private int status;
     private UploadedImage data;
 
+    public UploadedImage getData() {
+        return data;
+    }
+
     public static class UploadedImage {
         private String id;
         private String title;
@@ -22,5 +26,9 @@ public class ImageResponse {
         private String deletehash;
         private String name;
         private String link;
+
+        public String getLink() {
+            return link;
+        }
     }
 }
