@@ -1,5 +1,8 @@
 package com.testproject.imgurloader.gallery;
 
+import com.testproject.imgurloader.api.ImgurApi;
+import com.testproject.imgurloader.upload.UploadService;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -18,4 +21,8 @@ public class GalleryModule {
         return new GalleryModel();
     }
 
+    @Provides
+    public UploadService provideUploadService(ImgurApi imgurApi) {
+        return new UploadService(imgurApi);
+    }
 }

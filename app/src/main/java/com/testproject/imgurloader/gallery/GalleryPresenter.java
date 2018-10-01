@@ -1,5 +1,9 @@
 package com.testproject.imgurloader.gallery;
 
+import com.testproject.imgurloader.upload.UploadService;
+
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
@@ -11,6 +15,9 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
     private GalleryMVP.View view;
 
     private Disposable subscription;
+
+    @Inject
+    private UploadService mUploadService;
 
     public GalleryPresenter(GalleryMVP.Model model) {
         this.model = model;
