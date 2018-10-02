@@ -19,7 +19,7 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
     private GalleryAdapter mGalleryCursorAdapter;
 
     @Inject
-    private GalleryMVP.Presenter presenter;
+    GalleryMVP.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -19,6 +19,13 @@
             </intent-filter>
 
         </activity>
+
+        <activity android:name=".links.LinksActivity"/>
+
+        <provider
+            android:name=".db.ImgurProvider"
+            android:authorities="com.testproject.imgurloader"
+            android:exported="false" />
     </application>
 
 </manifest>

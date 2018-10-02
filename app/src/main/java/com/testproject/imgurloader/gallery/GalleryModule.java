@@ -1,5 +1,7 @@
 package com.testproject.imgurloader.gallery;
 
+import android.content.Context;
+
 import com.testproject.imgurloader.api.ImgurApi;
 import com.testproject.imgurloader.upload.UploadService;
 
@@ -17,8 +19,8 @@ public class GalleryModule {
     }
 
     @Provides
-    public GalleryMVP.Model provideGalleryModel() {
-        return new GalleryModel();
+    public GalleryMVP.Model provideGalleryModel(Context context) {
+        return new GalleryModel(context);
     }
 
     @Provides

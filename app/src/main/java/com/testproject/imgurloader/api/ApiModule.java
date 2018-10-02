@@ -1,10 +1,12 @@
 package com.testproject.imgurloader.api;
 
+import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@Module
 public class ApiModule {
 
     public final String BASE_URL = "https://api.imgur.com";

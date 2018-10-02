@@ -21,7 +21,7 @@ public class UploadService {
     private ImgurApi imgurApi;
 
     @Inject
-    private LinksPresenter mLinksPresenter;
+    LinksPresenter mLinksPresenter;
 
     public UploadService(ImgurApi imgurApi) {
         this.imgurApi = imgurApi;

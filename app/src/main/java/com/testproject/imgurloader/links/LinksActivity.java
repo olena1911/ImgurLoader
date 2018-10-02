@@ -22,7 +22,7 @@ public class LinksActivity extends AppCompatActivity implements LinksMVP.View {
     private LinksAdapter mLinksAdapter;
 
     @Inject
-    private LinksMVP.Presenter presenter;
+    LinksMVP.Presenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

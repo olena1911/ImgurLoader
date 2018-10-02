@@ -13,14 +13,17 @@ import io.reactivex.Observable;
 
 public class GalleryModel implements GalleryMVP.Model {
 
-    @Inject
     private Context mContext;
+
+    public GalleryModel(Context context) {
+        mContext = context;
+    }
 
     @Override
     public Observable<String> getPhotoPaths() {
         String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = mContext.getContentResolver().query(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                MediaStore.Images.Media.INTERNAL_CONTENT_URI,
                 projection,
                 null,
                 null,

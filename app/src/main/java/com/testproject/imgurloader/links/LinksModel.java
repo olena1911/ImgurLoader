@@ -16,7 +16,7 @@ import io.reactivex.Observable;
 public class LinksModel implements LinksMVP.Model {
 
     @Inject
-    private Context mContext;
+    Context mContext;
 
     @Override
     public Observable<String> getLinks() {

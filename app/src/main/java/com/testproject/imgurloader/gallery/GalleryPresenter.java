@@ -17,7 +17,7 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
     private Disposable subscription;
 
     @Inject
-    private UploadService mUploadService;
+    UploadService mUploadService;
 
     public GalleryPresenter(GalleryMVP.Model model) {
         this.model = model;
