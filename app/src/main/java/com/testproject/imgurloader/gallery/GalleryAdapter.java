@@ -1,10 +1,15 @@
 package com.testproject.imgurloader.gallery;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.testproject.imgurloader.R;
@@ -15,9 +20,11 @@ import java.util.List;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoViewHolder> {
 
     private List<String> pathList;
+    private GalleryMVP.Presenter mGalleryPresenter;
 
-    public GalleryAdapter(List<String> pathList) {
+    public GalleryAdapter(List<String> pathList, GalleryMVP.Presenter galleryPresenter) {
         this.pathList = pathList;
+        mGalleryPresenter = galleryPresenter;
     }
 
     @Override
@@ -28,12 +35,42 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
     }
 
     @Override
-    public void onBindViewHolder(GalleryAdapter.PhotoViewHolder holder, int position) {
+    public void onBindViewHolder(final GalleryAdapter.PhotoViewHolder holder, final int position) {
         Picasso.get()
-                .load(pathList.get(position))
+                .load("file://" + pathList.get(position))
                 .resize(300, 300)
                 .centerInside()
                 .into(holder.photoImageView);
+
+        holder.photoImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGalleryPresenter.onItemClicked(position, pathList.get(position));
+            }
+        });
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position, @NonNull List<Object> payloads) {
+        onBindViewHolder(holder, position);
+        Log.d("progress_bar", "position " + position);
+        if (payloads != null && payloads.size() != 0) {
+
+            for (Object o : payloads) {
+                Log.d("progress_bar", o.toString());
+            }
+            Boolean showLoadingSpinner = (Boolean) payloads.get(payloads.size()-1);
+            if (showLoadingSpinner) {
+                holder.progressBar.setVisibility(View.VISIBLE);
+                Log.d("progress_bar", "visible");
+            } else {
+                holder.progressBar.setVisibility(View.GONE);
+                Log.d("progress_bar", "hide");
+            }
+        }
+        else {
+            Log.d("progress_bar", "payloads == null");
+        }
     }
 
     @Override
@@ -41,13 +78,16 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
         return pathList.size();
     }
 
+
     public class PhotoViewHolder extends RecyclerView.ViewHolder {
 
         ImageView photoImageView;
+        ProgressBar progressBar;
 
         public PhotoViewHolder(View itemView) {
             super(itemView);
             photoImageView = itemView.findViewById(R.id.img_photo);
+            progressBar = itemView.findViewById(R.id.progressbar_loading);
         }
     }
 }

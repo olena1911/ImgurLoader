@@ -2,6 +2,7 @@ package com.testproject.imgurloader.gallery;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Environment;
 import android.provider.MediaStore;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class GalleryModel implements GalleryMVP.Model {
         List<String> pathsList = new ArrayList<>();
         cursor.moveToFirst();
         do {
-            pathsList.add("file://" + cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)));
+            pathsList.add(cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)));
             cursor.moveToNext();
         }
         while (!cursor.isLast());

@@ -16,4 +16,5 @@ public interface ApplicationComponent {
 
     void inject(GalleryActivity galleryActivity);
     void inject(LinksActivity linksActivity);
+
 }

@@ -1,5 +1,7 @@
 package com.testproject.imgurloader.api;
 
+import com.github.simonpercic.oklog3.OkLogInterceptor;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -13,7 +15,10 @@ public class ApiModule {
 
     @Provides
     public OkHttpClient provideClient() {
-        return new OkHttpClient.Builder().build();
+        OkLogInterceptor okLogInterceptor = OkLogInterceptor.builder().build();
+        return new OkHttpClient.Builder()
+                .addInterceptor(okLogInterceptor)
+                .build();
     }
 
     @Provides

@@ -24,8 +24,9 @@ public class ImgurContract {
 
         public static final String TABLE_NAME = "links";
 
-        public final static String _ID = BaseColumns._ID;
+        public static final String _ID = BaseColumns._ID;
         public static final String COLUMN_LINK = "link";
+        public static final String COLUMN_DELETEHASH = "deletehash";
     }
 
 }

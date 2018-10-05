@@ -1,5 +1,7 @@
 package com.testproject.imgurloader.links;
 
+import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -12,8 +14,8 @@ public class LinksModule {
     }
 
     @Provides
-    public LinksMVP.Model provideLinksModel() {
-        return new LinksModel();
+    public LinksMVP.Model provideLinksModel(Context context) {
+        return new LinksModel(context);
     }
 
 }

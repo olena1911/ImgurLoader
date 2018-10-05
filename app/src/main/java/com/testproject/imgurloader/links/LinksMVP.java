@@ -6,7 +6,7 @@ public interface LinksMVP {
 
     interface Model {
         Observable<String> getLinks();
-        void addLink(String url);
+        void addLink(String url, String deletehash);
     }
 
     interface View {
@@ -17,6 +17,6 @@ public interface LinksMVP {
     interface Presenter {
         void setView(LinksMVP.View view);
         void loadLinks();
-        void saveLink(String url);
+        void saveLink(String url, String deletehash);
     }
 }

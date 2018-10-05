@@ -3,6 +3,7 @@ package com.testproject.imgurloader.gallery;
 import android.content.Context;
 
 import com.testproject.imgurloader.api.ImgurApi;
+import com.testproject.imgurloader.links.LinksMVP;
 import com.testproject.imgurloader.upload.UploadService;
 
 import javax.inject.Singleton;
@@ -14,8 +15,8 @@ import dagger.Provides;
 public class GalleryModule {
 
     @Provides
-    public GalleryMVP.Presenter provideGalleryPresenter(GalleryMVP.Model galleryModel) {
-        return new GalleryPresenter(galleryModel);
+    public GalleryMVP.Presenter provideGalleryPresenter(GalleryMVP.Model galleryModel, UploadService uploadService) {
+        return new GalleryPresenter(galleryModel, uploadService);
     }
 
     @Provides
@@ -24,7 +25,7 @@ public class GalleryModule {
     }
 
     @Provides
-    public UploadService provideUploadService(ImgurApi imgurApi) {
-        return new UploadService(imgurApi);
+    public UploadService provideUploadService(LinksMVP.Presenter linksPresenter, ImgurApi imgurApi) {
+        return new UploadService(linksPresenter, imgurApi);
     }
 }

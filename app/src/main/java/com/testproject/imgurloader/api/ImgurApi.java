@@ -18,7 +18,8 @@ public interface ImgurApi {
     @Multipart
     @POST("/3/image")
     Call<ImageResponse> postImage(
+            @Header("Authorization") String auth,
             @Part("title") RequestBody title,
-            @Part MultipartBody.Part file
+            @Part MultipartBody.Part image
     );
 }

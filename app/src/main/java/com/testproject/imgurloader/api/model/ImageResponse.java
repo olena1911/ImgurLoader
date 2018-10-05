@@ -5,6 +5,14 @@ public class ImageResponse {
     private int status;
     private UploadedImage data;
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
     public UploadedImage getData() {
         return data;
     }
@@ -12,23 +20,23 @@ public class ImageResponse {
     public static class UploadedImage {
         private String id;
         private String title;
-        private String description;
-        private String type;
-        private boolean animated;
-        private int width;
-        private int height;
-        private int size;
-        private int views;
-        private int bandwidth;
-        private String vote;
-        private boolean favorite;
-        private String account_url;
         private String deletehash;
-        private String name;
         private String link;
+
+        public String getId() {
+            return id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
 
         public String getLink() {
             return link;
+        }
+
+        public String getDeletehash() {
+            return deletehash;
         }
     }
 }

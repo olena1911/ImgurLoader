@@ -16,7 +16,7 @@ import javax.inject.Inject;
 public class GalleryActivity extends AppCompatActivity implements GalleryMVP.View {
 
     private List<String> pathsList = new ArrayList<>();
-    private GalleryAdapter mGalleryCursorAdapter;
+    private GalleryAdapter mGalleryAdapter;
 
     @Inject
     GalleryMVP.Presenter presenter;
@@ -29,10 +29,11 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
         ((App) getApplication()).getComponent().inject(this);
 
         RecyclerView mPhotosRecyclerView = findViewById(R.id.list_gallery);
-        mPhotosRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        mPhotosRecyclerView.setLayoutManager(gridLayoutManager);
 
-        mGalleryCursorAdapter = new GalleryAdapter(pathsList);
-        mPhotosRecyclerView.setAdapter(mGalleryCursorAdapter);
+        mGalleryAdapter = new GalleryAdapter(pathsList, presenter);
+        mPhotosRecyclerView.setAdapter(mGalleryAdapter);
     }
 
     @Override
@@ -47,12 +48,22 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
         super.onStop();
         presenter.rxUnsubscribe();
         pathsList.clear();
-        mGalleryCursorAdapter.notifyDataSetChanged();
+        mGalleryAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void updateData(String path) {
         pathsList.add(path);
-        mGalleryCursorAdapter.notifyItemInserted(pathsList.size() - 1);
+        mGalleryAdapter.notifyItemInserted(pathsList.size() - 1);
+    }
+
+    @Override
+    public void showLoadingSpinner(int position) {
+        mGalleryAdapter.notifyItemChanged(position, true);
+    }
+
+    @Override
+    public void hideLoadingSpinner(int position) {
+        mGalleryAdapter.notifyItemChanged(position, false);
     }
 }

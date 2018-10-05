@@ -21,11 +21,12 @@ public class ImgurDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String SQL_CREATE_WEATHER_TABLE =  "CREATE TABLE " + LinksEntry.TABLE_NAME + " ("
+        String SQL_CREATE_LINKS_TABLE =  "CREATE TABLE " + LinksEntry.TABLE_NAME + " ("
                 + LinksEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + LinksEntry.COLUMN_LINK + " TEXT NOT NULL)";
+                + LinksEntry.COLUMN_LINK + " TEXT NOT NULL, "
+                + LinksEntry.COLUMN_DELETEHASH + " TEXT NOT NULL)";
 
-        db.execSQL(SQL_CREATE_WEATHER_TABLE);
+        db.execSQL(SQL_CREATE_LINKS_TABLE);
         Log.i(LOG_TAG, "Links table is created");;
     }
 

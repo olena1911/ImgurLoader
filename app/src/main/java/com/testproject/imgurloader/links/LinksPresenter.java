@@ -32,7 +32,6 @@ public class LinksPresenter implements LinksMVP.Presenter {
                         public void onComplete() {
                         }
 
-
                         @Override
                         public void onNext(String s) {
                             if (view != null) {
@@ -48,7 +47,7 @@ public class LinksPresenter implements LinksMVP.Presenter {
     }
 
     @Override
-    public void saveLink(String url) {
-        model.addLink(url);
+    public void saveLink(String url, String deletehash) {
+        model.addLink(url, deletehash);
     }
 }

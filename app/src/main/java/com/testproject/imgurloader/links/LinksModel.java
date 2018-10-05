@@ -15,8 +15,11 @@ import io.reactivex.Observable;
 
 public class LinksModel implements LinksMVP.Model {
 
-    @Inject
-    Context mContext;
+    private Context mContext;
+
+    public LinksModel(Context context) {
+        mContext = context;
+    }
 
     @Override
     public Observable<String> getLinks() {
@@ -35,11 +38,10 @@ public class LinksModel implements LinksMVP.Model {
         linksCursor.moveToFirst();
 
         List<String> linksList = new ArrayList<>();
-        int count = 0;
+
         do {
             linksList.add(linksCursor.getString(linksCursor.getColumnIndex(ImgurContract.LinksEntry.COLUMN_LINK)));
             linksCursor.moveToNext();
-            count++;
         }
         while (!linksCursor.isLast());
 
@@ -48,9 +50,10 @@ public class LinksModel implements LinksMVP.Model {
     }
 
     @Override
-    public void addLink(String url) {
+    public void addLink(String url, String deletehash) {
         ContentValues values = new ContentValues();
         values.put(ImgurContract.LinksEntry.COLUMN_LINK, url);
+        values.put(ImgurContract.LinksEntry.COLUMN_DELETEHASH, deletehash);
         mContext.getContentResolver().insert(ImgurContract.LinksEntry.CONTENT_URI, values);
     }
 }
