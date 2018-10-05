@@ -22,7 +22,7 @@
 
         </activity>
 
-        <activity android:name=".links.LinksActivity"/>
+        <activity android:name=".links.LinksActivity" android:label="@string/label_links"/>
 
         <provider
             android:name=".db.ImgurProvider"

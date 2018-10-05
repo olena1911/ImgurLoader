@@ -75,7 +75,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
 
     @Override
     public int getItemCount() {
-        return pathList.size();
+        if (pathList == null) {
+            return 0;
+        } else {
+            return pathList.size();
+        }
     }
 
 

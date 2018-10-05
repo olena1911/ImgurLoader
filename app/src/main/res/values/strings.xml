@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ImgurLoader</string>
+    <string name="label_links">Links</string>
     <string name="menu_item_links">Links</string>
 </resources>

@@ -46,7 +46,11 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinkViewHold
 
     @Override
     public int getItemCount() {
-        return linksList.size();
+        if (linksList == null) {
+            return 0;
+        } else {
+            return linksList.size();
+        }
     }
 
     public class LinkViewHolder extends RecyclerView.ViewHolder {
