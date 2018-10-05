@@ -46,6 +46,13 @@ public class LinksActivity extends AppCompatActivity implements LinksMVP.View {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        linksList.clear();
+        mLinksAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void openLinkInBrowser(String url) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW);
         browserIntent.setData(Uri.parse(url));

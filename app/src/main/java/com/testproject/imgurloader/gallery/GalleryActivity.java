@@ -1,11 +1,15 @@
 package com.testproject.imgurloader.gallery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.testproject.imgurloader.R;
+import com.testproject.imgurloader.links.LinksActivity;
 import com.testproject.imgurloader.root.App;
 
 import java.util.ArrayList;
@@ -65,5 +69,24 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
     @Override
     public void hideLoadingSpinner(int position) {
         mGalleryAdapter.notifyItemChanged(position, false);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.gallery_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_item_links:
+                Intent linksActivityIntent = new Intent(this, LinksActivity.class);
+                startActivity(linksActivityIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
