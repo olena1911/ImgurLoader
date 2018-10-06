@@ -13,16 +13,18 @@
         android:supportsRtl="true"
         android:name="com.testproject.imgurloader.root.App"
         android:theme="@style/AppTheme">
-        <activity android:name=".gallery.GalleryActivity">
+        <activity android:name=".gallery.GalleryActivity"
+            android:screenOrientation="sensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".links.LinksActivity" android:label="@string/label_links"/>
+        <activity
+            android:name=".links.LinksActivity"
+            android:label="@string/label_links"
+            android:screenOrientation="sensor" />
 
         <provider
             android:name=".db.ImgurProvider"

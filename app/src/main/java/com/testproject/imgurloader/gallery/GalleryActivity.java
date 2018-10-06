@@ -1,6 +1,7 @@
 package com.testproject.imgurloader.gallery;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,8 +34,12 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
         ((App) getApplication()).getComponent().inject(this);
 
         RecyclerView mPhotosRecyclerView = findViewById(R.id.list_gallery);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        mPhotosRecyclerView.setLayoutManager(gridLayoutManager);
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            mPhotosRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        } else{
+            mPhotosRecyclerView.setLayoutManager(new GridLayoutManager(this, 5));
+        }
 
         mGalleryAdapter = new GalleryAdapter(pathsList, presenter);
         mPhotosRecyclerView.setAdapter(mGalleryAdapter);
