@@ -82,4 +82,10 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
     public void onImageUploaded(int position) {
         view.hideLoadingSpinner(position);
     }
+
+    @Override
+    public void onErrorWhileUploading(int position, String imageName) {
+        view.hideLoadingSpinner(position);
+        view.showErrorAlert(imageName);
+    }
 }

@@ -15,6 +15,7 @@ public interface GalleryMVP {
         void updateData(String path);
         void showLoadingSpinner(int position);
         void hideLoadingSpinner(int position);
+        void showErrorAlert(String imageName);
     }
 
     interface Presenter {
@@ -22,6 +23,7 @@ public interface GalleryMVP {
         void loadPicturesFromGallery();
         void onItemClicked(int position, String path);
         void onImageUploaded(int position);
+        void onErrorWhileUploading(int position, String imageName);
         void rxUnsubscribe();
     }
 }

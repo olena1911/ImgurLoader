@@ -2,4 +2,7 @@
     <string name="app_name">ImgurLoader</string>
     <string name="label_links">Links</string>
     <string name="menu_item_links">Links</string>
+    <string name="alert_not_uploaded_title">Error while uploading</string>
+    <string name="alert_not_uploaded_message">An error occurred while uploading the image:\n</string>
+    <string name="alert_not_uploaded_button">OK</string>
 </resources>

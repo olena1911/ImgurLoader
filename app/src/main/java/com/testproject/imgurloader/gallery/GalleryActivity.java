@@ -1,5 +1,6 @@
 package com.testproject.imgurloader.gallery;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
 
         mGalleryAdapter = new GalleryAdapter(pathsList, presenter);
         mPhotosRecyclerView.setAdapter(mGalleryAdapter);
+        showErrorAlert("D:/image.png");
     }
 
     @Override
@@ -93,5 +95,15 @@ public class GalleryActivity extends AppCompatActivity implements GalleryMVP.Vie
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void showErrorAlert(String imageName) {
+        AlertDialog errorAlertDialog = new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.alert_not_uploaded_message) + imageName)
+                .setTitle(getString(R.string.alert_not_uploaded_title))
+                .setPositiveButton(getString(R.string.alert_not_uploaded_button), null)
+                .create();
+        errorAlertDialog.show();
     }
 }

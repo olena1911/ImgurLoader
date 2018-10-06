@@ -51,6 +51,7 @@ public class UploadService {
                                 mGalleryPresenter.onImageUploaded(imageToUpload.getPosition());
                             } else {
                                 Log.e(LOG_TAG, "Response is not successful.");
+                                mGalleryPresenter.onErrorWhileUploading(imageToUpload.getPosition(), imageToUpload.getTitle());
                             }
                         }
 
