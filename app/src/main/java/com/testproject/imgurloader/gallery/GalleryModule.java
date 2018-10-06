@@ -6,8 +6,6 @@ import com.testproject.imgurloader.api.ImgurApi;
 import com.testproject.imgurloader.links.LinksMVP;
 import com.testproject.imgurloader.upload.UploadService;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

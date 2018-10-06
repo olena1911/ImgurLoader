@@ -9,8 +9,6 @@ import com.testproject.imgurloader.db.ImgurContract;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import io.reactivex.Observable;
 
 public class LinksModel implements LinksMVP.Model {

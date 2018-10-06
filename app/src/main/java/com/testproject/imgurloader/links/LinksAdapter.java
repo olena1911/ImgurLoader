@@ -12,8 +12,6 @@ import com.testproject.imgurloader.R;
 
 import java.util.List;
 
-import butterknife.BindView;
-
 public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinkViewHolder>{
 
     private LinksMVP.View mLinksView;

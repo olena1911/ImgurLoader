@@ -2,7 +2,6 @@ package com.testproject.imgurloader.root;
 
 import android.app.Application;
 
-import com.testproject.imgurloader.gallery.GalleryModel;
 import com.testproject.imgurloader.gallery.GalleryModule;
 import com.testproject.imgurloader.links.LinksModule;
 

@@ -2,13 +2,10 @@ package com.testproject.imgurloader.gallery;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Environment;
 import android.provider.MediaStore;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import io.reactivex.Observable;
 

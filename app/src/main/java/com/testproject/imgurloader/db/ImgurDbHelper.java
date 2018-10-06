@@ -30,7 +30,7 @@ public class ImgurDbHelper extends SQLiteOpenHelper {
                 + LinksEntry.COLUMN_DELETEHASH + " TEXT NOT NULL)";
 
         db.execSQL(SQL_CREATE_LINKS_TABLE);
-        Log.i(LOG_TAG, "Links table is created");;
+        Log.i(LOG_TAG, "Links table is created");
     }
 
     @Override
