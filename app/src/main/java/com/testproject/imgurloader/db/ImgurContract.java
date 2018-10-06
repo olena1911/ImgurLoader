@@ -4,6 +4,9 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+/**
+ * Class-contract that describes imgurloader.db.
+ */
 public class ImgurContract {
 
     public static final String CONTENT_AUTHORITY = "com.testproject.imgurloader";

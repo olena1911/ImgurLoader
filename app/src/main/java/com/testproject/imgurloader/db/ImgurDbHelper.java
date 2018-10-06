@@ -7,6 +7,9 @@ import android.util.Log;
 
 import static com.testproject.imgurloader.db.ImgurContract.LinksEntry;
 
+/**
+ * Class-helper to create database.
+ */
 public class ImgurDbHelper extends SQLiteOpenHelper {
 
     public static final String LOG_TAG = ImgurDbHelper.class.getSimpleName();

@@ -2,6 +2,9 @@ package com.testproject.imgurloader.api.model;
 
 import java.io.File;
 
+/**
+ * Stores data about uploading image file.
+ */
 public class ImageToUpload {
 
     private int position;

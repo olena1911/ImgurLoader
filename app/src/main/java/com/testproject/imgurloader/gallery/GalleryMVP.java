@@ -2,6 +2,9 @@ package com.testproject.imgurloader.gallery;
 
 import io.reactivex.Observable;
 
+/**
+ * Declares Gallery MVP interfaces.
+ */
 public interface GalleryMVP {
 
     interface Model {

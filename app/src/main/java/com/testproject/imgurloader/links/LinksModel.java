@@ -49,6 +49,11 @@ public class LinksModel implements LinksMVP.Model {
         return Observable.fromIterable(linksList);
     }
 
+    /**
+     * Saves link in database.
+     * @param url   link
+     * @param deletehash    hash by which the image can be deleted
+     */
     @Override
     public void addLink(String url, String deletehash) {
         ContentValues values = new ContentValues();

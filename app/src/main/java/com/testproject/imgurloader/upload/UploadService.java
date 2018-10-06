@@ -21,6 +21,7 @@ public class UploadService {
 
     private ImgurApi imgurApi;
     private final static String API_KEY = "f28cd5fbd5be37f";
+    private final static String AUTH_PARAMETER = "Client-ID " + API_KEY;
 
     private LinksMVP.Presenter mLinksPresenter;
     private GalleryMVP.Presenter mGalleryPresenter;
@@ -39,7 +40,7 @@ public class UploadService {
         RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), imageToUpload.getImageFile());
         MultipartBody.Part body = MultipartBody.Part.createFormData("image", imageToUpload.getTitle(), requestFile);
         RequestBody name = RequestBody.create(okhttp3.MultipartBody.FORM, imageToUpload.getTitle());
-        Call<ImageResponse> req = imgurApi.postImage("Client-ID "+ API_KEY, name, body);
+        Call<ImageResponse> req = imgurApi.postImage(AUTH_PARAMETER, name, body);
         req.enqueue(new Callback<ImageResponse>() {
                         @Override
                         public void onResponse(Call<ImageResponse> call, Response<ImageResponse> response) {

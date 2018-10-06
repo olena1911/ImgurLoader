@@ -2,6 +2,9 @@ package com.testproject.imgurloader.links;
 
 import io.reactivex.Observable;
 
+/**
+ * Declares Links MVP interfaces.
+ */
 public interface LinksMVP {
 
     interface Model {

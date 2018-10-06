@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
+/**
+ * Class-provider to work with imgurloader.db.
+ */
 public class ImgurProvider extends ContentProvider {
 
     public static final String LOG_TAG = ImgurProvider.class.getSimpleName();

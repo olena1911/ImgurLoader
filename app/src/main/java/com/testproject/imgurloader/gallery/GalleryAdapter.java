@@ -53,23 +53,13 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
     @Override
     public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position, @NonNull List<Object> payloads) {
         onBindViewHolder(holder, position);
-        Log.d("progress_bar", "position " + position);
         if (payloads != null && payloads.size() != 0) {
-
-            for (Object o : payloads) {
-                Log.d("progress_bar", o.toString());
-            }
             Boolean showLoadingSpinner = (Boolean) payloads.get(payloads.size()-1);
             if (showLoadingSpinner) {
                 holder.progressBar.setVisibility(View.VISIBLE);
-                Log.d("progress_bar", "visible");
             } else {
                 holder.progressBar.setVisibility(View.GONE);
-                Log.d("progress_bar", "hide");
             }
-        }
-        else {
-            Log.d("progress_bar", "payloads == null");
         }
     }
 

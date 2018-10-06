@@ -1,5 +1,8 @@
 package com.testproject.imgurloader.api.model;
 
+/**
+ * Class for API response parsing.
+ */
 public class ImageResponse {
     private boolean success;
     private int status;
