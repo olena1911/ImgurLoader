@@ -18,6 +18,7 @@ public interface GalleryMVP {
         void setView(GalleryMVP.View view);
         void loadPicturesFromGallery();
         void onItemClicked(int position, String path);
+        void onImageUploaded(int position);
         void rxUnsubscribe();
     }
 }

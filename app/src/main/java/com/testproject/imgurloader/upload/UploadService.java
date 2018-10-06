@@ -1,10 +1,9 @@
 package com.testproject.imgurloader.upload;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.testproject.imgurloader.api.ImgurApi;
-import com.testproject.imgurloader.api.model.FileToUpload;
+import com.testproject.imgurloader.api.model.ImageToUpload;
 import com.testproject.imgurloader.api.model.ImageResponse;
 import com.testproject.imgurloader.gallery.GalleryMVP;
 import com.testproject.imgurloader.links.LinksMVP;
@@ -24,17 +23,22 @@ public class UploadService {
     private final static String API_KEY = "f28cd5fbd5be37f";
 
     private LinksMVP.Presenter mLinksPresenter;
+    private GalleryMVP.Presenter mGalleryPresenter;
 
     public UploadService(LinksMVP.Presenter linksPresenter, ImgurApi imgurApi) {
         mLinksPresenter = linksPresenter;
         this.imgurApi = imgurApi;
     }
 
-    public void uploadFile(FileToUpload fileToUpload) {
+    public void setGalleryPresenter(GalleryMVP.Presenter galleryPresenter) {
+        mGalleryPresenter = galleryPresenter;
+    }
+
+    public void uploadFile(final ImageToUpload imageToUpload) {
         Log.d(LOG_TAG, "file uploading start");
-        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), fileToUpload.getImageFile());
-        MultipartBody.Part body = MultipartBody.Part.createFormData("image", fileToUpload.getTitle(), requestFile);
-        RequestBody name = RequestBody.create(okhttp3.MultipartBody.FORM, fileToUpload.getTitle());
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), imageToUpload.getImageFile());
+        MultipartBody.Part body = MultipartBody.Part.createFormData("image", imageToUpload.getTitle(), requestFile);
+        RequestBody name = RequestBody.create(okhttp3.MultipartBody.FORM, imageToUpload.getTitle());
         Call<ImageResponse> req = imgurApi.postImage("Client-ID "+ API_KEY, name, body);
         req.enqueue(new Callback<ImageResponse>() {
                         @Override
@@ -43,6 +47,7 @@ public class UploadService {
                                 String link = response.body().getData().getLink();
                                 String deletehash = response.body().getData().getDeletehash();
                                 mLinksPresenter.saveLink(link, deletehash);
+                                mGalleryPresenter.onImageUploaded(imageToUpload.getPosition());
                             } else {
                                 Log.e(LOG_TAG, "Response is not successful.");
                             }

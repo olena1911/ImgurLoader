@@ -2,11 +2,20 @@ package com.testproject.imgurloader.api.model;
 
 import java.io.File;
 
-public class FileToUpload {
+public class ImageToUpload {
 
+    private int position;
     private File imageFile;
     private String title;
     private String uri;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public File getImageFile() {
         return imageFile;

@@ -1,11 +1,9 @@
 package com.testproject.imgurloader.gallery;
 
-import com.testproject.imgurloader.api.model.FileToUpload;
+import com.testproject.imgurloader.api.model.ImageToUpload;
 import com.testproject.imgurloader.upload.UploadService;
 
 import java.io.File;
-
-import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -24,6 +22,7 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
     public GalleryPresenter(GalleryMVP.Model model, UploadService uploadService) {
         this.model = model;
         mUploadService = uploadService;
+        mUploadService.setGalleryPresenter(this);
     }
 
     @Override
@@ -71,11 +70,16 @@ public class GalleryPresenter implements GalleryMVP.Presenter {
     public void onItemClicked(int position, String path) {
         view.showLoadingSpinner(position);
         File imageFile = new File(path);
-        FileToUpload fileToUpload = new FileToUpload();
-        fileToUpload.setImageFile(imageFile);
-        fileToUpload.setTitle(imageFile.getName());
-        fileToUpload.setUri(path);
-        mUploadService.uploadFile(fileToUpload);
+        ImageToUpload imageToUpload = new ImageToUpload();
+        imageToUpload.setPosition(position);
+        imageToUpload.setImageFile(imageFile);
+        imageToUpload.setTitle(imageFile.getName());
+        imageToUpload.setUri(path);
+        mUploadService.uploadFile(imageToUpload);
+    }
+
+    @Override
+    public void onImageUploaded(int position) {
         view.hideLoadingSpinner(position);
     }
 }
